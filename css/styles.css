@@ -1,3 +1,4 @@
+/* Root Variables */
 :root {
   --accent-color: #6c5ce7;
   --background-color: #fdf6ff;
@@ -9,7 +10,7 @@
   --transition-speed: 0.3s;
 }
 
-/* dark mode override */
+/* Dark Mode */
 body:has(#dark-toggle:checked) {
   --accent-color: #00cec9;
   --background-color: #1e1e2f;
@@ -17,7 +18,7 @@ body:has(#dark-toggle:checked) {
   --card-color: #2c2c3e;
 }
 
-/* base styles */
+/* Base Styles */
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
@@ -28,7 +29,7 @@ body {
     color var(--transition-speed);
 }
 
-/* header layout */
+/* Header */
 header {
   background-color: var(--accent-color);
   padding: 1rem 2rem;
@@ -50,7 +51,7 @@ header {
   gap: 1.5rem;
 }
 
-/* typing effect */
+/* Typing animation effect */
 .typing {
   width: 0;
   overflow: hidden;
@@ -74,7 +75,7 @@ header {
   }
 }
 
-/* theme toggle */
+/* Light/Dark theme toggle switch */
 .theme-switcher {
   display: flex;
   align-items: center;
@@ -99,7 +100,7 @@ header {
   transform: rotate(20deg);
 }
 
-/* nav links */
+/* Desktop navigation links */
 nav ul {
   list-style: none;
   display: flex;
@@ -119,13 +120,13 @@ nav a:hover {
   opacity: 0.7;
 }
 
-/* HIDE HAMBURGER CHECKBOX AND MENU ICON ON DESKTOP */
+/* Hide mobile nav elements on desktop */
 #nav-toggle,
 .nav-toggle-label {
   display: none;
 }
 
-/* section animation */
+/* Sections */
 section {
   margin-bottom: 4rem;
   opacity: 0;
@@ -140,7 +141,6 @@ section {
   }
 }
 
-/* section titles */
 h2 {
   color: var(--accent-color);
   text-align: center;
@@ -148,7 +148,7 @@ h2 {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* profile card layout */
+/* Profile Card */
 .profile-section .profile-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -179,7 +179,6 @@ h2 {
   font-size: 1.1rem;
 }
 
-/* contact button */
 .contact-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -206,6 +205,7 @@ h2 {
   font-weight: normal;
 }
 
+/* Projects Grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -219,7 +219,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: background-color var(--transition-speed),
     transform var(--transition-speed);
-  overflow: hidden; /* Ensures image corners are rounded */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -232,7 +232,6 @@ h2 {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: contain;
-  /* Added a background color to fill the empty space */
   background-color: var(--background-color);
 }
 
@@ -245,7 +244,7 @@ h2 {
 .project-card p {
   font-size: 1rem;
   margin: 0 1.5rem 1rem;
-  flex-grow: 1; /* Makes card heights equal in a row */
+  flex-grow: 1;
 }
 
 .tech-stack {
@@ -287,11 +286,11 @@ h2 {
 }
 
 .project-button:hover {
-  background-color: #e85c50; 
+  background-color: #e85c50;
   transform: translateY(-2px);
 }
 
-/* favorites grid */
+/* Favorites Grid */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -329,7 +328,7 @@ h2 {
   text-align: center;
 }
 
-/* socials section */
+/* Socials & Contact */
 .socials-section {
   text-align: center;
 }
@@ -354,12 +353,11 @@ h2 {
   transform: scale(1.2);
 }
 
-/* contact info */
 .contact-info-section {
   text-align: center;
 }
 
-/* footer */
+/* Footer */
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -374,14 +372,13 @@ footer p {
   flex-wrap: wrap;
 }
 
-/* media queries */
+/* Media Queries */
 
 /* Desktop and up */
 @media (min-width: 768px) {
   .profile-card {
     grid-template-columns: 1fr 2fr;
   }
-
   .profile-card > div {
     align-items: flex-start;
   }
@@ -390,28 +387,24 @@ footer p {
 /* For smaller mobile devices */
 @media (max-width: 320px) {
   .header-content {
-    padding: 1rem; /* Less padding in the header */
+    padding: 1rem;
   }
-
   .profile-section .profile-card {
-    padding: 1rem; /* Less padding in the profile card */
+    padding: 1rem;
   }
-
   .favorites-grid {
-    padding: 0 1rem; /* Less padding for the favorites grid */
+    padding: 0 1rem;
   }
 }
 
 /* For screens larger than 1024px */
 @media (min-width: 1024px) {
   .favorite-item img {
-    border-radius: 24px; /* More rounded corners for favorite images */
+    border-radius: 24px;
   }
 }
 
-
-/*  NEW MOBILE NAV (Hamburger Menu) */
-
+/* Mobile Navigation (Hamburger) */
 
 /* For screens smaller than 767px (tablets and phones) */
 @media (max-width: 767px) {
@@ -432,6 +425,7 @@ footer p {
 
   /* Style the hamburger icon */
   .nav-toggle-label {
+    position: relative; /* Establishes z-index stacking context */
     display: block;
     cursor: pointer;
     width: 30px;
@@ -487,7 +481,6 @@ footer p {
     font-size: 1.2rem;
   }
 
-  
   /* When the checkbox is checked, slide the menu in */
   #nav-toggle:checked ~ .nav-theme {
     left: 0;
@@ -504,7 +497,8 @@ footer p {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  /* Fix for other sections */
+  /* Mobile Layout Fixes */
+
   /* Fix profile card for mobile */
   .profile-section .profile-card {
     grid-template-columns: 1fr; /* Stack image and text */
