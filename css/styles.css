@@ -408,4 +408,34 @@ footer p {
   .contact-button:hover {
     background-color: #a29bfe; /* Change hover color of the contact button */
   }
+
+  /* === NEW MOBILE HEADER FIXES === */
+  .header-content {
+    /* Stacks the name and nav block vertically */
+    grid-template-columns: 1fr;
+    /* Adds some space between them */
+    gap: 1rem;
+    /* Centers the name and nav block */
+    justify-items: center;
+  }
+
+  .nav-theme {
+    /* Allows the nav links and theme-switcher to wrap */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav ul {
+    /* Allows your nav links to wrap to the next line */
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Add a small gap between wrapped links */
+    gap: 0.5rem 1.5rem;
+  }
+
+  .logo-name .typing {
+    /* Ensures the typing animation doesn't overflow */
+    max-width: 100%;
+    font-size: 1.5rem; /* Makes font smaller on mobile */
+  }
 }
