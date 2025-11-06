@@ -119,6 +119,12 @@ nav a:hover {
   opacity: 0.7;
 }
 
+/* HIDE HAMBURGER CHECKBOX AND MENU ICON ON DESKTOP */
+#nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
 /* section animation */
 section {
   margin-bottom: 4rem;
@@ -281,7 +287,7 @@ h2 {
 }
 
 .project-button:hover {
-  background-color: #e85c50; /* Matches your contact button hover */
+  background-color: #e85c50; 
   transform: translateY(-2px);
 }
 
@@ -403,39 +409,114 @@ footer p {
   }
 }
 
-/* For screens smaller than 600px */
-@media (max-width: 600px) {
-  .contact-button:hover {
-    background-color: #a29bfe; /* Change hover color of the contact button */
+
+/*  NEW MOBILE NAV (Hamburger Menu) */
+
+
+/* For screens smaller than 767px (tablets and phones) */
+@media (max-width: 767px) {
+  /* Make header NOT sticky */
+  header {
+    position: static;
   }
 
-  /* === NEW MOBILE HEADER FIXES === */
+  /* Make header content just 2 columns */
   .header-content {
-    /* Stacks the name and nav block vertically */
-    grid-template-columns: 1fr;
-    /* Adds some space between them */
-    gap: 1rem;
-    /* Centers the name and nav block */
-    justify-items: center;
-  }
-
-  .nav-theme {
-    /* Allows the nav links and theme-switcher to wrap */
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  nav ul {
-    /* Allows your nav links to wrap to the next line */
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Add a small gap between wrapped links */
-    gap: 0.5rem 1.5rem;
+    grid-template-columns: 1fr auto;
+    padding: 1rem;
   }
 
   .logo-name .typing {
-    /* Ensures the typing animation doesn't overflow */
-    max-width: 100%;
-    font-size: 1.5rem; /* Makes font smaller on mobile */
+    font-size: 1.25rem;
+  }
+
+  /* Style the hamburger icon */
+  .nav-toggle-label {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1002; /* Above the slide-out menu */
+  }
+
+  /* The 3 lines of the hamburger */
+  .nav-toggle-label span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Hide the actual checkbox */
+  #nav-toggle {
+    display: none;
+  }
+
+  /* Position the slide-out menu */
+  .nav-theme {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--card-color);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1001; /* Below the hamburger icon */
+  }
+
+  /* Make nav links stack vertically */
+  nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Change nav link color for the slide-out menu */
+  nav a {
+    color: var(--text-color);
+    font-size: 1.2rem;
+  }
+
+  
+  /* When the checkbox is checked, slide the menu in */
+  #nav-toggle:checked ~ .nav-theme {
+    left: 0;
+  }
+
+  /* Animate the hamburger icon into an "X" */
+  #nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  #nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Fix for other sections */
+  /* Fix profile card for mobile */
+  .profile-section .profile-card {
+    grid-template-columns: 1fr; /* Stack image and text */
+    padding: 1.5rem;
+    justify-items: center;
+  }
+  .profile-card p {
+    text-align: center; /* Center the bio text */
+  }
+  /* Fix favorites grid for mobile */
+  .favorites-grid {
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    padding: 0 1rem;
   }
 }
