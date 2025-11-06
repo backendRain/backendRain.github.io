@@ -443,7 +443,7 @@ footer p {
     height: 3px;
     background-color: white;
     border-radius: 3px;
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3, background-color 0.3s;
   }
 
   /* Hide the actual checkbox */
@@ -464,7 +464,7 @@ footer p {
     align-items: flex-start;
     padding: 2rem;
     gap: 2rem;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease-in-out;
     z-index: 1001; /* Below the hamburger icon */
   }
@@ -495,6 +495,11 @@ footer p {
   }
   #nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Change "X" color to be visible on the white menu */
+  #nav-toggle:checked ~ .nav-toggle-label span {
+    background-color: var(--text-color);
   }
 
   /* Mobile Layout Fixes */
